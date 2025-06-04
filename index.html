@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <title>
+            MY PORTFOLIO
+        </title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+            .header {
+                background-color: #333;
+                color: #fff;
+                padding: 1rem 0;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 1000; /* ensures header stick on the top */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);/*subtle shadow for depth*/
+            }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            .navbar .logo {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.8rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .nav-links {
+                list-style: none; /*removes bullet points from the list*/
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            .nav-links li {
+                margin-left: 20px;
+            }
+            .nav-links a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.1rem;
+                padding: 5px 0;
+                transition: color 0.3s ease-in-out;
+            }
+            .nav-links a:hover {
+                color: #00bcd4;
+            }
+            main {
+                padding-top: 80px;
+            }
+            .hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px; /* Adjust padding as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Make the hero section take up the full viewport height */
+    margin-top: -80px; /* Negative margin to pull it up behind the fixed header */
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 80px; /* Compensate for the negative margin to push content down */
+}
+
+.hero-photo {
+    width: 180px; /* Adjust size as needed */
+    height: 180px; /* Ensure aspect ratio is maintained for circular image */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border: 5px solid #00bcd4; /* Accent border around the photo */
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.6); /* Glow effect */
+}
+
+.hero-headline {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Subtle text shadow for readability */
+}
+
+.hero-tagline {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* General Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #00bcd4; /* Primary button color */
+    color: #fff;
+    border: 2px solid #00bcd4;
+}
+
+.btn-primary:hover {
+    background-color: #0097a7; /* Darker shade on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #00bcd4; /* Accent color */
+    border-radius: 2px;
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 80px 0; /* Add padding to top and bottom */
+    background-color: #fff; /* White background for contrast */
+}
+
+.about-content {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto; /* Center the content box */
+}
+
+.about-content p {
+    margin-bottom: 20px; /* Space between paragraphs */
+}
+
+.about-content p:last-child {
+    margin-bottom: 0; /* No margin after the last paragraph */
+}
+.projects-section {
+    padding: 80px 0;
+    background-color: #f4f4f4; /* Light gray background for contrast */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns */
+    gap: 30px; /* Space between project cards */
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures image corners are rounded with the card */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+}
+
+.project-image {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block; /* Removes extra space below image */
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-title {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.project-technologies {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow technologies to wrap to next line */
+    gap: 8px; /* Space between technology tags */
+}
+
+.project-technologies li {
+    background-color: #e0f7fa; /* Light accent background */
+    color: #00796b; /* Darker accent text */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.project-links {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the start */
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+/* Secondary Button Styles (for project links) */
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    display: flex; /* Use flex to align text and icon */
+    align-items: center;
+    gap: 8px; /* Space between text and icon */
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+    color: #00bcd4; /* Accent color on hover */
+    border-color: #00bcd4;
+    transform: translateY(-2px);
+}
+.skills-section {
+    padding: 80px 0;
+    background-color: #fff; /* White background for contrast */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for skills */
+    gap: 30px;
+    justify-content: center; /* Center items if they don't fill a row */
+}
+
+.skill-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.skill-icon {
+    font-size: 3.5rem;
+    color: #00bcd4; /* Accent color for icons */
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.skill-bar-container {
+    width: 100%;
+    background-color: #e0e0e0; /* Background of the bar */
+    border-radius: 5px;
+    height: 10px; /* Height of the bar */
+    overflow: hidden; /* Ensures the inner bar stays within rounded corners */
+}
+
+.skill-bar {
+    height: 100%;
+    background-color: #00bcd4; /* Color of the progress */
+    border-radius: 5px;
+    width: 0%; /* Start at 0% and animate in with JS later */
+    transition: width 1.5s ease-out; /* Smooth animation for bar fill */
+}
+
+.html-bar { width: 90%; }
+.css-bar { width: 85%; }
+.js-bar { width: 80%; }
+.cybersecurity-bar { width: 30%; } 
+.backend-bar { width: 50%; }     
+.database-bar { width: 45%; }    
+
+.contact-section {
+    padding: 80px 0;
+    background-color: #f4f4f4; /* Light gray background for contrast */
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-intro {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact-form {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Puts label on its own line */
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 12px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #00bcd4; /* Accent color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing by user */
+}
+
+.contact-form .btn-primary {
+    width: auto; /* Allow button to size itself */
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    margin-top: 10px; /* Space above button */
+}
+
+.contact-info {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-info i {
+    font-size: 1.5rem;
+    color: #00bcd4; /* Accent color for icons */
+    margin-right: 10px;
+    width: 30px; /* Fixed width for icon to prevent text jumping */
+    text-align: center;
+}
+
+.contact-info a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-info a:hover {
+    color: #00796b;
+    text-decoration: underline;
+}
+
+        </style>
+        <link rel ="icon" href="images/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <a href="#" class="logo">Denis Ngunjiri</a>
+                <ul class="nav-links">
+                    <li><a href ="#hero">Home</a></li>
+                    <li><a href ="#about">About</a></li>
+                    <li><a href ="#projects">Projects</a></li>
+                    <li><a href ="#skills">Skills</a></li>
+                    <li><a href ="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <img src="me.jpg" alt="Your Professional Photo" class="hero-photo">
+                    <h1 class="hero-headline">Crafting Engaging Web Experiences</h1>
+                    <p class="hero-tagline">Your Vision, Brought to Life Online. Front-End Developer | Cybersecurity Enthusiast</p>
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                </div>
+            </section>
+            <section id ="about" class="about-section">
+                <div class="container">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="about-content">
+                        <p>Hello! I'm a passionate **Front-End Developer** dedicated to crafting intuitive and visually stunning web experiences. With a keen eye for design and a strong commitment to user-centric development, I bring ideas to life on the web.</p>
+                        <p>My journey in web development is fueled by a constant desire to learn and innovate. I thrive on challenges and enjoy turning complex problems into elegant solutions. Beyond coding beautiful interfaces, I have a deep-seated interest in **cybersecurity**, which gives me a unique perspective on building secure and robust applications from the ground up.</p>
+                        <p>I'm always eager to collaborate on exciting projects that push the boundaries of what's possible online. Let's create something amazing together!</p>
+                    </div>
+                </div>
+            </section>
+            <section id="projects" class="projects-section">
+                <div class="container">
+                    <h2 class="section-title">My Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <img src="project1.PNG" alt="Project 1 Screenshot" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title">E-commerce Store Front</h3>
+                                <p class="project-description">A responsive e-commerce front-end application built with modern JavaScript frameworks, featuring product listings, a shopping cart, and a sleek user interface.</p>
+                                <ul class="project-technologies">
+                                    <li>HTML5</li>
+                                    <li>CSS3</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://ngunjiridenis.github.io/le-fragrances/" class="btn btn-secondary" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                                    <a href="https://github.com/Ngunjiridenis/le-fragrances" class="btn btn-secondary" target="_blank">GitHub Repo <i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>       
+                </div>
+            </section>
+            <section id="skills" class="skills-section">
+                <div class="container">
+                    <h2 class="section-title">My Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-html5 skill-icon"></i>
+                            <h3 class="skill-name">HTML5</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar html-bar"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt skill-icon"></i>
+                            <h3 class="skill-name">CSS3</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar css-bar"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square skill-icon"></i>
+                            <h3 class="skill-name">JavaScript</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar js-bar"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt skill-icon"></i>
+                            <h3 class="skill-name">Cybersecurity Concepts</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar cybersecurity-bar"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server skill-icon"></i>
+                            <h3 class="skill-name">Basic Backend (PHP)</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar backend-bar"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database skill-icon"></i>
+                            <h3 class="skill-name">Database Fundamentals</h3>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar database-bar"></div>
+                            </div>
+                        </div>
+    
+                        </div>
+                </div>
+            </section>
+            <section id="contact" class="contact-section">
+                <div class="container">
+                    <h2 class="section-title">Get in Touch</h2>
+                    <div class="contact-content">
+                        <p class="contact-intro">Have a project in mind, or just want to say hello? Feel free to reach out!</p>
+    
+                        <form class="contact-form" action="mailto:denisngunjiri73@gmail.com" method="post" enctype="text/plain">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+    
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:denisngunjiri73@gmail.com">denisngunjiri73@gmail.com</a></p>
+                            <p><i class="fab fa-linkedin"></i> LinkedIn: <a href="www.linkedin.com/in/denis-ngunjiri-3861422b9" target="_blank">www.linkedin.com/in/denis-ngunjiri-3861422b9</a></p>
+                            <p><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Ngunjiridenis" target="_blank">github.com/Ngunjiridenis</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class ="footer">
+            <p>&copy; <span id ="current-year"></span>Denis Ngunjiri. All rights reserved.</p>
+        </footer>
+
+        <script>
+            document.getElementById('current-year').textContent=new Date().getFullYear();
+        </script>
+    </body>
+</html>
